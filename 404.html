@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    // Send /Characters, /CREDITS etc. to the lowercase page that actually exists
+    (function(){var p=location.pathname,l=p.toLowerCase();if(p!==l)location.replace(l+location.search+location.hash);})();
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — OmniHaven</title>
+  <meta name="description" content="OmniHaven: play as a cursor with your mouse to fight against bosses. Wishlist on Steam!">
+
+  <!-- Social preview (Discord / Twitter embeds) -->
+  <meta property="og:title" content="OmniHaven — By Plubu">
+  <meta property="og:description" content="Play as a cursor with your mouse to fight against bosses! Wishlist on Steam.">
+  <meta property="og:url" content="https://omnihavengame.com/">
+  <meta property="og:image" content="https://omnihavengame.com/OmniHavenLogo.png">
+  <meta name="theme-color" content="#0b0d16">
+
+  <link rel="icon" href="/OmniHavenLogo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="OmniHaven home">
+        <img src="/OmniHavenLogo.png" alt="OmniHaven"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="logo-fallback">OmniHaven</span>
+        <span class="byline">By <strong>Plubu</strong></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section">
+      <div class="panel coming-soon">
+        <h2>Page not found</h2>
+        <p><a href="/">Back to the main page</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span id="year">2026</span> Plubu · OmniHaven</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+  </script>
+  <script src="/cursor.js"></script>
+</body>
+</html>

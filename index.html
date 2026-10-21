@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OmniHaven — By Plubu</title>
+  <meta name="description" content="OmniHaven: play as a cursor with your mouse to fight against bosses. Wishlist on Steam!">
+  <link rel="canonical" href="https://omnihavengame.com/">
+
+  <!-- Social preview (Discord / Twitter embeds) -->
+  <meta property="og:title" content="OmniHaven — By Plubu">
+  <meta property="og:description" content="Play as a cursor with your mouse to fight against bosses! Wishlist on Steam.">
+  <meta property="og:url" content="https://omnihavengame.com/">
+  <meta property="og:image" content="https://omnihavengame.com/OmniHavenLogo.png">
+  <meta name="theme-color" content="#0b0d16">
+
+  <link rel="icon" href="OmniHavenLogo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="OmniHaven home">
+        <img src="OmniHavenLogo.png" alt="OmniHaven"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="logo-fallback">OmniHaven</span>
+        <span class="byline">By <strong>Plubu</strong></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===== STEAM ===== -->
+    <section class="section">
+      <div class="steam-box win">
+        <span class="win-title">Steam</span>
+          <iframe src="https://store.steampowered.com/widget/2941610/"
+                  title="OmniHaven on Steam" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- ===== COMMUNITY ===== -->
+    <section class="section">
+      <div class="community">
+
+        <!-- Discord: fills in member/online counts automatically when it can -->
+        <div class="win">
+          <span class="win-title">Discord</span>
+          <a class="card discord" id="discord-card" href="https://discord.gg/r5HpGN7fSb"
+             target="_blank" rel="noopener">
+            <div class="icon" id="discord-icon">
+              <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.3 4.4A19.6 19.6 0 0 0 15.4 3l-.6 1.3a18.2 18.2 0 0 0-5.6 0L8.6 3a19.5 19.5 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.8 19.8 0 0 0 6 3l1.3-2a12.8 12.8 0 0 1-2-1l.5-.4a14.1 14.1 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l1.3 2a19.7 19.7 0 0 0 6-3c.5-5.2-.9-9.7-3.6-13.7ZM8 15.4c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.6 8 10.6s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>
+            </div>
+            <div class="info">
+              <div class="label">Discord Server</div>
+              <div class="name" id="discord-name">OmniHaven</div>
+              <div class="meta" id="discord-meta">Chat with the community</div>
+            </div>
+            <span class="go">Join</span>
+          </a>
+          </div>
+
+        <!-- Linktree -->
+        <div class="win">
+          <span class="win-title">Links</span>
+          <a class="card linktree" href="https://linktr.ee/Plubu" target="_blank" rel="noopener">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="#0b1a0f" aria-hidden="true"><path d="M13.5 8.2h5.7L15 4.4l2.3-2.4 4 4.1v5.8h-5.7l4.1 3.9-2.4 2.4-5.6-5.6-5.6 5.6-2.4-2.4L7.8 12H2.1V6.1l4-4.1 2.3 2.4-4.2 3.8h5.7V2h3.6v6.2ZM10.4 16h3.6v6h-3.6v-6Z"/></svg>
+            </div>
+            <div class="info">
+              <div class="label">Linktree</div>
+              <div class="name">Plubu</div>
+              <div class="meta">All my links in one place</div>
+            </div>
+            <span class="go">Open</span>
+          </a>
+          </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© <span id="year">2026</span> Plubu · OmniHaven</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Pull live server info from Discord's public invite endpoint.
+    // If it fails for any reason, the card just stays as the static version.
+    (async function () {
+      try {
+        const res = await fetch('https://discord.com/api/v10/invites/r5HpGN7fSb?with_counts=true');
+        if (!res.ok) return;
+        const data = await res.json();
+        const g = data.guild || {};
+        if (g.name) document.getElementById('discord-name').textContent = g.name;
+        if (data.approximate_member_count) {
+          document.getElementById('discord-meta').innerHTML =
+            '<span class="dot" style="background:#23a55a"></span>' +
+            (data.approximate_presence_count || 0).toLocaleString() + ' online &nbsp;' +
+            '<span class="dot" style="background:#80848e"></span>' +
+            data.approximate_member_count.toLocaleString() + ' members';
+        }
+        if (g.id && g.icon) {
+          const ext = g.icon.startsWith('a_') ? 'gif' : 'png';
+          document.getElementById('discord-icon').innerHTML =
+            '<img alt="" src="https://cdn.discordapp.com/icons/' + g.id + '/' + g.icon + '.' + ext + '?size=128">';
+        }
+      } catch (e) { /* keep static card */ }
+    })();
+  </script>
+  <script src="bosses.js"></script>
+  <script src="cursor.js"></script>
+</body>
+</html>
